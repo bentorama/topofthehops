@@ -24,6 +24,8 @@ gem 'redis', '~> 4.0'
 
 # Use RTesseract
 gem 'rtesseract'
+# Use RMagick
+gem 'rmagick'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

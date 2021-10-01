@@ -6,9 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'rtesseract'
+require 'rmagick'
+include Magick
 
 menu = '/home/bentorama/code/bentorama/topofthehops/app/assets/images/example_01.png'
 
-image = RTesseract.new(menu).to_box
-# image.to_s.each_line { |s| puts s }
-p image
+test = ImageList.new(menu)
+test.display
+
+# image = RTesseract.new(menu).to_box
+# # image.to_s.each_line { |s| puts s }
+# p image
