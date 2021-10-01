@@ -15,6 +15,6 @@ class BeersController < ApplicationController
     untappd_secret = ENV['CLIENT_SECRET']
     url = "https://api.untappd.com/v4/search/beer?q=#{search}&client_id=#{untappd_id}&client_secret=#{untappd_secret}"
     beer_serialized = URI.open(url).read
-    @beer = JSON.parse(beer_serialized)
+    @beer = JSON.parse(beer_serialized)["response"]["beers"]["items"].first
   end
 end
