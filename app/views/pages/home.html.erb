@@ -1,2 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<div class="flex justify-center">
+  <div>
+    <%= form_tag beers_path, method: :get, id: "search-form" do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search for a beer...", id: "search" %>
+    <% end %>
+  </div>
+</div>
