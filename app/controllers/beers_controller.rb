@@ -5,6 +5,8 @@ class BeersController < ApplicationController
   def index
     if params[:query].present? && params[:query] != ""
       call_untappd(params[:query])
+    else
+      @beer = "Nothing searched"
     end
   end
 
