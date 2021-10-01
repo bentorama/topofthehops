@@ -1,2 +1,24 @@
-<%# <p><%= @beer["beer"]["beer_name"] %></p> %>
-<p><%= @beers %></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Beer</th>
+      <th scope="col">Brewery</th>
+      <th scope="col">Style</th>
+      <th scope="col">ABV</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @beers.each_with_index do |beer, index| %>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= beer["beer"]["beer_name"] %></td>
+        <td><%= beer["brewery"]["brewery_name"] %></td>
+        <td><%= beer["beer"]["beer_style"] %></td>
+        <td><%= beer["beer"]["beer_abv"] %></td>
+        <td>5</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
