@@ -2,8 +2,15 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 <div class="flex justify-center">
   <div>
-    <%= form_tag beers_path, method: :get, id: "search-form" do %>
-      <%= text_field_tag :query, params[:query], placeholder: "Search for a beer...", id: "search" %>
+    <%# <%= form_tag beers_path, method: :get, id: "search-form" do %>
+      <%# <%= text_field_tag :query, params[:query], placeholder: "Search for a beer...", id: "search" %>
+    <%# <% end %>
+    <%= simple_form_for :search, url: beers_path, method: "GET" do |f| %>
+      <%= f.input :beer_1, label: false, required: true, placeholder: "Enter first beer... " %>
+      <%= f.input :beer_2, label: false, required: false, placeholder: "Enter second beer..." %>
+      <%= f.input :beer_3, label: false, required: false, placeholder: "Enter third beer..." %>
+      <%= f.input :beer_4, label: false, required: false, placeholder: "Enter fourth beer..." %>      
+      <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

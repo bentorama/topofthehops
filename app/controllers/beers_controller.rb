@@ -3,8 +3,13 @@ class BeersController < ApplicationController
   require 'json'
 
   def index
-    if params[:query].present? && params[:query] != ""
-      call_untappd(params[:query])
+    if params["search"]["beer_1"].present? && params["search"]["beer_1"] != ""
+      @beers = []
+      params["search"].each_value do |value|
+        call_untappd(value)
+      end
+    else
+      @beer = "Nothing searched"
     end
   end
 
@@ -15,6 +20,6 @@ class BeersController < ApplicationController
     untappd_secret = ENV['CLIENT_SECRET']
     url = "https://api.untappd.com/v4/search/beer?q=#{search}&client_id=#{untappd_id}&client_secret=#{untappd_secret}"
     beer_serialized = URI.open(url).read
-    @beer = JSON.parse(beer_serialized)["response"]["beers"]["items"].first
+    @beers << JSON.parse(beer_serialized)["response"]["beers"]["items"].first
   end
 end
