@@ -21,7 +21,7 @@ class BeersController < ApplicationController
     untappd_id = ENV['UNTAPPD_ID']
     untappd_secret = ENV['CLIENT_SECRET']
     url = "https://api.untappd.com/v4/search/beer?q=#{search}&client_id=#{untappd_id}&client_secret=#{untappd_secret}"
-    beer_serialized = URI.open(url).read
+    beer_serialized = URI.parse(url).open.read
     @beers << JSON.parse(beer_serialized)["response"]["beers"]["items"].first
   end
 
@@ -31,7 +31,7 @@ class BeersController < ApplicationController
     @beers.each do |beer|
       bid = beer["beer"]["bid"]
       url = "https://api.untappd.com/v4/beer/info/#{bid}?&client_id=#{untappd_id}&client_secret=#{untappd_secret}"
-      beer_serialized = URI.open(url).read
+      beer_serialized = URI.parse(url).open.read
       @ratings << JSON.parse(beer_serialized)["response"]["beer"]["rating_score"]
     end
   end
