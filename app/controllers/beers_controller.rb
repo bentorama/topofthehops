@@ -61,6 +61,7 @@ class BeersController < ApplicationController
     new_beer.name = beer["beer_name"]
     new_beer.style = beer["beer_style"]
     new_beer.description = beer["beer_description"]
+    new_beer.abv = beer["beer_abv"]
     new_beer.untappd_rating = rating
     new_beer.untappd_id = beer["bid"]
     new_beer.brewery = brewery
