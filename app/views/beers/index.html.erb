@@ -6,18 +6,20 @@
       <th scope="col">Brewery</th>
       <th scope="col">Style</th>
       <th scope="col">ABV</th>
-      <th scope="col">Rating</th>
+      <th scope="col">TotH Rating</th>
+      <th scope="col">Untappd Rating</th>
     </tr>
   </thead>
   <tbody>
     <% @beers.each_with_index do |beer, index| %>
       <tr>
         <th scope="row"><%= index + 1 %></th>
-        <td><%= beer["beer"]["beer_name"] %></td>
-        <td><%= beer["brewery"]["brewery_name"] %></td>
-        <td><%= beer["beer"]["beer_style"] %></td>
-        <td><%= beer["beer"]["beer_abv"] %></td>
-        <td><%= @ratings[index] %></td>
+        <td><%= beer.name %></td>
+        <td><%= beer.brewery.name %></td>
+        <td><%= beer.style %></td>
+        <td><%= beer.abv %></td>
+        <td><%= beer.rating %></td>
+        <td><%= beer.untappd_rating.round(1) %></td>
       </tr>
     <% end %>
   </tbody>
