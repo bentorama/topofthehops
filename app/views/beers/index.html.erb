@@ -6,7 +6,8 @@
       <th scope="col">Brewery</th>
       <th scope="col">Style</th>
       <th scope="col">ABV</th>
-      <th scope="col">Rating</th>
+      <th scope="col">TotH Rating</th>
+      <th scope="col">Untappd Rating</th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +18,8 @@
         <td><%= beer.brewery.name %></td>
         <td><%= beer.style %></td>
         <td><%= beer.abv %></td>
-        <td><%= @ratings[index] %></td>
+        <td><%= beer.rating %></td>
+        <td><%= beer.untappd_rating.round(1) %></td>
       </tr>
     <% end %>
   </tbody>
